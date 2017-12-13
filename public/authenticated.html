@@ -22,7 +22,7 @@
     
 </head>
 
-<body>
+<body onmouseover="verifyLoggin()">
 
 <div ng-controller="chatController">
 <form novalidate class="simple-form">
@@ -32,42 +32,17 @@
 </form>
 <ul>
 <li ng-repeat='line in chats'>
-{{line.from}} - {{line.body}}
+{{line.from}} - {{line.body}} - {{line.image}}
 </li>
 </ul>
 </div>
-<script>
-    firebase.auth().getRedirectResult().then(function(result) {
-  if (result.credential) {
-    // This gives you a Google Access Token. You can use it to access the Google API.
-    var token = result.credential.accessToken;
-    // ...
-  }
-  // The signed-in user info.
-  var user = result.user;
-        onSignIn(user);
-}).catch(function(error) {
-  // Handle Errors here.
-  var errorCode = error.code;
-  var errorMessage = error.message;
-  // The email of the user's account used.
-  var email = error.email;
-  // The firebase.auth.AuthCredential type that was used.
-  var credential = error.credential;
-  // ...
-});
+    <button onclick="logout()">Sign Out</button>
+<script> 
     function verifyLoggin(){
         if(firebase.auth().currentUser == null){
             window.location.replace("http://ec2-54-201-196-253.us-west-2.compute.amazonaws.com:3010/index.html");
         }
     }
-    function onSignIn(googleUser) {
-      var profile = googleUser.getBasicProfile();
-      console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-      console.log('Name: ' + profile.getName());
-      console.log('Image URL: ' + profile.getImageUrl());
-      console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-   }
     
     </script>
 </body>
