@@ -20,14 +20,26 @@
 <script src="https://cdn.firebase.com/libs/angularfire/2.1.0/angularfire.min.js"></script>
 <script src="javascripts/script.js"></script>
     <meta name="google-signin-client_id" content="370496652083-2in9s34c13tiu9u2gmkrvpq01k6idoun.apps.googleusercontent.com">
-</head>
+
+    
+        <title>Console</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    
+    
+    </head>
 
 <body onmouseover="verifyLoggin()">
 <meta name="google-signin-client_id" content="370496652083-2in9s34c13tiu9u2gmkrvpq01k6idoun.apps.googleusercontent.com">
-<h1>Login Page</h1>
-    <p>You must login to your google account if you wish to use this app!</p>
+    <div class="container">
+    <h1>Login Page</h1>
+        <p>Welcome to my secure gaming chat app.</p>
+        <p>You must login to your google account if you wish to use this app!</p>
+        <button onclick="login()">Log in with Google</button>
+    </div>
 
-    <button onclick="login()">Log in with Google</button>
 
 <script>
     function autorun()

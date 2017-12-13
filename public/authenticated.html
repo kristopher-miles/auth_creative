@@ -19,24 +19,43 @@
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
 <script src="https://cdn.firebase.com/libs/angularfire/2.1.0/angularfire.min.js"></script>
 <script src="javascripts/script.js"></script>
+    <title>Console</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     
 </head>
 
-<body onmouseover="verifyLoggin()">
+<body onmouseover="NOT-verifyLoggin()">
+    <div class="container">
+        <h1>Secure Gaming Interface</h1>
+        <div class="row">
+            <div class="col">
+                <form novalidate class="simple-form">
+                    <div>Name: <input type="text" cols="35" ng-model="user.name" /></div>
+                    <div>Chat: <textarea rows="4" cols="35" ng-model="user.chat"></textarea></div>
+                    
+                    <button type="button" class="btn btn-success" type="submit" ng-click="update(user)" value="Save">Save</button>
+                </form>
+            </div>
+            <div class="col-8">
+                <div ng-controller="chatController">
+                    <div class="card" ng-repeat='line in chats'>
+                    <div class="card-header">
+                    <img class="user-icon" src="{{line.image}}" alt="" height="30" width="30">{{line.from}}
+                    </div>
+                  <div class="card-body">
+                    <p class="card-text">{{line.body}}</p>
+                  </div>
+                </div>
 
-<div ng-controller="chatController">
-<form novalidate class="simple-form">
-  Name: <input type="text" ng-model="user.name" /><br />
-  Chat: <input type="text" ng-model="user.chat" /><br />
-  <input type="submit" ng-click="update(user)" value="Save" />
-</form>
-<ul>
-<li ng-repeat='line in chats'>
-{{line.from}} - {{line.body}} - {{line.image}}
-</li>
-</ul>
-</div>
-    <button onclick="logout()">Sign Out</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button type="button" class="btn btn-secondary" onclick="logout()">Sign Out</button>
 <script> 
     function verifyLoggin(){
         if(firebase.auth().currentUser == null){
@@ -45,5 +64,6 @@
     }
     
     </script>
+  
 </body>
 </html>
