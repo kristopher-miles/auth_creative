@@ -30,12 +30,19 @@
     <button onclick="login()">Log in with Google</button>
     <button onclick="logout()">Sign Out</button>
 <script>
+    function autorun()
+   {
+    verifyLoggin();
+   }
+   if (window.addEventListener) window.addEventListener("load", autorun, false);
+   else if (window.attachEvent) window.attachEvent("onload", autorun);
+   else window.onload = autorun;
     function verifyLoggin(){
         if(firebase.auth().currentUser != null){
             window.location.replace("http://ec2-54-201-196-253.us-west-2.compute.amazonaws.com:3010/authenticated.html");
         }
     }
-    verifyLoggin();
+    
     </script>
 </body>
 </html>
