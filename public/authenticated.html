@@ -24,22 +24,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-    
+    <link rel="stylesheet" type="text/css" href="theme.css">
 </head>
 
 <body ng-controller="chatController">
-    <div class="container">
+    <div ng-mousemove="updateUser()" class="container">
         <h1>Secure Gaming Interface</h1>
         <div class="row">
             <div class="col">
                 <form novalidate class="simple-form">
-  			<div>Chat: <textarea rows="4" cols="35" ng-model="user.chat"></textarea>                    
-  
-  			<button type="button" class="btn btn-success" type="submit" ng-click="update(user)" value="Save">Save</button>
-                    
-
-                    
-                    
+                    <p>Signed in as: {{currentUser}}</p>
+                    <div><textarea cols="40" ng-model="user.chat"></textarea></div>
+                    <div>
+                        <button type="button" class="btn btn-secondary" onclick="logout()">Sign Out</button>
+                        <button type="button" class="btn btn-success" type="submit" ng-click="update(user)" value="Save">Send</button>
+                        
+                    </div> 
                 </form>
             </div>
             <div class="col-8">
@@ -56,19 +56,6 @@
                 </div>
             </div>
         </div>
-    </div>
-
-    <button type="button" class="btn btn-secondary" onclick="logout()">Sign Out</button>
-<script> 
-    function verifyLoggin(){
-        if(firebase.auth().currentUser == null){
-            window.location.replace("http://ec2-54-201-196-253.us-west-2.compute.amazonaws.com:3010/index.html");
-		return true;
-        }
-		return false;
-    }
-    
-    </script>
-  
+    </div>  
 </body>
 </html>

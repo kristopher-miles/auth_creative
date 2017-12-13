@@ -5,6 +5,7 @@ var provider = new firebase.auth.GoogleAuthProvider();
 myApp.controller("chatController", ["$scope", "$firebaseArray",
                                     function($scope, $firebaseArray) {
    var ref = firebase.database().ref().child("messages");
+                                        $scope.currentUser = "";
                                         
    $scope.chats = $firebaseArray(ref);
    $scope.update = function(user) {
@@ -14,6 +15,12 @@ myApp.controller("chatController", ["$scope", "$firebaseArray",
        	   $scope.chats.$add(newmessage);
            user.chat = "";
 	}
+   }
+   $scope.updateUser = function(){
+       if(firebase.auth().currentUser!=null){
+           $scope.currentUser = firebase.auth().currentUser.displayName;
+       }
+       
    }
  }
                                     
@@ -30,4 +37,5 @@ function logout(){
         verifyLoggin();
     }).catch(function(error) {});      
 }
+
 
