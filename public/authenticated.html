@@ -27,20 +27,23 @@
     
 </head>
 
-<body onmouseover="NOT-verifyLoggin()">
+<body ng-controller="chatController">
     <div class="container">
         <h1>Secure Gaming Interface</h1>
         <div class="row">
             <div class="col">
                 <form novalidate class="simple-form">
-                    <div>Name: <input type="text" cols="35" ng-model="user.name" /></div>
-                    <div>Chat: <textarea rows="4" cols="35" ng-model="user.chat"></textarea></div>
+  			<div>Chat: <textarea rows="4" cols="35" ng-model="user.chat"></textarea>                    
+  
+  			<button type="button" class="btn btn-success" type="submit" ng-click="update(user)" value="Save">Save</button>
                     
-                    <button type="button" class="btn btn-success" type="submit" ng-click="update(user)" value="Save">Save</button>
+
+                    
+                    
                 </form>
             </div>
             <div class="col-8">
-                <div ng-controller="chatController">
+                <div>
                     <div class="card" ng-repeat='line in chats'>
                     <div class="card-header">
                     <img class="user-icon" src="{{line.image}}" alt="" height="30" width="30">{{line.from}}
@@ -60,7 +63,9 @@
     function verifyLoggin(){
         if(firebase.auth().currentUser == null){
             window.location.replace("http://ec2-54-201-196-253.us-west-2.compute.amazonaws.com:3010/index.html");
+		return true;
         }
+		return false;
     }
     
     </script>
