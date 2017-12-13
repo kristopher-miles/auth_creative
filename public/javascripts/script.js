@@ -1,4 +1,5 @@
 var myApp = angular.module("myApp",["firebase"]);
+var provider = new firebase.auth.GoogleAuthProvider();
 
 
 myApp.controller("chatController", ["$scope", "$firebaseArray",
@@ -17,3 +18,7 @@ myApp.controller("chatController", ["$scope", "$firebaseArray",
  }
                                     
 ]);
+
+function login(){
+    firebase.auth().signInWithRedirect(provider);
+}
