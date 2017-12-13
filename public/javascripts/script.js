@@ -32,11 +32,3 @@ function logout(){
         
     }
 
-function verifyLoggin(){
-        if(firebase.auth().currentUser != null){
-            window.location.replace("http://ec2-54-201-196-253.us-west-2.compute.amazonaws.com:3010/authenticated.html");
-        }
-        else{
-            window.location.replace("http://ec2-54-201-196-253.us-west-2.compute.amazonaws.com:3010/index.html");
-        }
-    }
