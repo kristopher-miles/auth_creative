@@ -24,20 +24,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="theme.css">
-</head>
+    <link rel="stylesheet" type="text/css" href="stylesheets/blockrain.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="javascripts/blockrain.jquery.min.js"></script>
+
+
+    
+    </head>
 
 <body ng-controller="chatController">
     <div ng-mousemove="updateUser()" class="container">
-        <h1>Secure Gaming Interface</h1>
+        <h1>Let's Play Tetris Together!</h1>
         <div class="row">
             <div class="col">
+            
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="game"s></div>
                 <form novalidate class="simple-form">
                     <p>Signed in as: {{currentUser}}</p>
-                    <div><textarea cols="40" ng-model="user.chat"></textarea></div>
-                    <div>
+                    <div><textarea rows="2" cols="45%" ng-model="user.chat"></textarea></div>
+                    <div id='button-holder'>
                         <button type="button" class="btn btn-secondary" onclick="logout()">Sign Out</button>
-                        <button type="button" class="btn btn-success" type="submit" ng-click="update(user)" value="Save">Send</button>
+                        <button type="button" class="btn btn-success" type="submit" ng-click="update(user)" value="Save">Send Message</button>
                         
                     </div> 
                 </form>
@@ -62,11 +74,14 @@
 
     function verifyLoggin(){
         if(firebase.auth().currentUser == null){
-            window.location.replace("http://ec2-54-201-196-253.us-west-2.compute.amazonaws.com:3010/index.html");
+            window.location.replace("index.html");
         }
     }
-    
-</script>
+    $('.game').blockrain();
 
+</script>
+<audio controls autoplay>
+  <source src="assets/tetris.mp3" type="audio/mpeg">
+</audio>
 </body>
 </html>

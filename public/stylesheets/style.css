@@ -1,8 +1,62 @@
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
   color: #00B7FF;
+}
+
+.btn-success{
+    float:right;
+    margin-right: 3em;
+    padding-left: 3em;
+    padding-right: 3em;
+}
+
+.row{
+    margin-top: 2em;
+}
+
+.card{
+   margin-top: 2px; 
+    padding:0px;
+}
+
+.card-header{
+    padding-bottom: 1px;
+    padding-top:1px;
+}
+
+.user-icon{
+    float:right;   
+}
+
+.card-body{
+    padding-top: 4px;
+    padding-bottom: .75em;
+}
+.game{
+    width:95%; 
+    height:400px;
+}
+
+.textarea{
+    width:100%;
+}
+
+#button-holder{
+    margin-top:1em;
+}
+
+.button-holder{
+    justify-content: center;
+}
+
+.btn-primary{
+
+    padding:1em;
+}
+
+audio{
+    visibility: hidden;
 }

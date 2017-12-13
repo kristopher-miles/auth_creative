@@ -28,20 +28,31 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     
-    <link rel="stylesheet" type="text/css" href="theme.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
     </head>
 
-<body onmouseover="verifyLoggin()">
+<body ng-controller="chatController" >
 <meta name="google-signin-client_id" content="370496652083-2in9s34c13tiu9u2gmkrvpq01k6idoun.apps.googleusercontent.com">
-    <div class="container">
-    <h1>Login Page</h1>
-        <p>Welcome to my secure gaming chat app.</p>
-        <p>You must login to your google account if you wish to use this app!</p>
-        <button onclick="login()">Log in with Google</button>
+    <div ng-mousemove="verifyLoggin()" class="container">
+    <h1>You are not logged in!</h1>
+        <br><br>
+        <p>Please login with google to continue.</p>
+            <div id="buttonholder">
+                <button type="button" class="btn btn-primary" onclick="login()">Google Login</button>
+            </div>
+        
+   
+        
     </div>
 
 
 <script>
+    function verifyLoggin(){
+        if(firebase.auth().currentUser != null){
+            window.location.replace("authenticated.html");
+        }
+    }
+    
     function autorun()
    {
     verifyLoggin();
@@ -49,11 +60,7 @@
    if (window.addEventListener) window.addEventListener("load", autorun, false);
    else if (window.attachEvent) window.attachEvent("onload", autorun);
    else window.onload = autorun;
-    function verifyLoggin(){
-        if(firebase.auth().currentUser != null){
-            window.location.replace("http://ec2-54-201-196-253.us-west-2.compute.amazonaws.com:3010/authenticated.html");
-        }
-    }
+    
     
     </script>
 </body>
