@@ -44,7 +44,7 @@
             </div>
             <div class="col-8">
                 <div>
-                    <div class="card" ng-repeat='line in chats'>
+                    <div class="card" ng-repeat="line in chats |orderBy: '-messagedate' ">
                     <div class="card-header">
                     <img class="user-icon" src="{{line.image}}" alt="" height="30" width="30">{{line.from}}
                     </div>
@@ -57,5 +57,16 @@
             </div>
         </div>
     </div>  
+
+<script>
+
+    function verifyLoggin(){
+        if(firebase.auth().currentUser == null){
+            window.location.replace("http://ec2-54-201-196-253.us-west-2.compute.amazonaws.com:3010/index.html");
+        }
+    }
+    
+</script>
+
 </body>
 </html>

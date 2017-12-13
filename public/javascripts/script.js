@@ -11,7 +11,8 @@ myApp.controller("chatController", ["$scope", "$firebaseArray",
    $scope.update = function(user) {
        var testOut = verifyLoggin();
 	if(!testOut){
-	   var newmessage = {from:firebase.auth().currentUser.displayName,image:firebase.auth().currentUser.photoURL, body:user.chat};
+	var currentTime = new Date().toISOString();
+	   var newmessage = {from:firebase.auth().currentUser.displayName, messagedate:currentTime, image:firebase.auth().currentUser.photoURL, body:user.chat};
        	   $scope.chats.$add(newmessage);
            user.chat = "";
 	}
