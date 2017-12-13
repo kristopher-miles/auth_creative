@@ -19,17 +19,24 @@
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
 <script src="https://cdn.firebase.com/libs/angularfire/2.1.0/angularfire.min.js"></script>
 <script src="javascripts/script.js"></script>
-    <meta name="google-signin-client_id" content="370496652083-n5494cr4qlvp42n7r8hh05pn24r9ft87.apps.googleusercontent.com
-.apps.googleusercontent.com">
+    
 </head>
 
 <body>
 
-<h1>Login Page</h1>
-    <p>You must login to your google account if you wish to use this app!</p>
-<div class="g-signin2" data-onsuccess="onSignIn"></div>
-    <script>
-    
+<div ng-controller="chatController">
+<form novalidate class="simple-form">
+  Name: <input type="text" ng-model="user.name" /><br />
+  Chat: <input type="text" ng-model="user.chat" /><br />
+  <input type="submit" ng-click="update(user)" value="Save" />
+</form>
+<ul>
+<li ng-repeat='line in chats'>
+{{line.from}} - {{line.body}}
+</li>
+</ul>
+</div>
+<script>
     function onSignIn(googleUser) {
       var profile = googleUser.getBasicProfile();
       console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
@@ -37,7 +44,7 @@
       console.log('Image URL: ' + profile.getImageUrl());
       console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
    }
-    
+    onSignIn();
     </script>
 </body>
 </html>
