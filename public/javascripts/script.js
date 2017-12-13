@@ -22,3 +22,12 @@ myApp.controller("chatController", ["$scope", "$firebaseArray",
 function login(){
     firebase.auth().signInWithRedirect(provider);
 }
+
+function logout(){
+        firebase.auth().signOut().then(function() {
+  console.log("This user has signed out successfully");
+}).catch(function(error) {
+  // An error happened.
+});
+        
+    }
